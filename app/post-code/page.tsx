@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>Post Code</div>;
+  return <div className="flex justify-center items-center">Post Code</div>;
 }

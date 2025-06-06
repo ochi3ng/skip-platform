@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>Waste Type</div>;
+  return <div className="flex justify-center items-center">Waste Type</div>;
 }

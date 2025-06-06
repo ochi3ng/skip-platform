@@ -69,3 +69,4 @@ npm run dev
 ## 🔑 Future Improvements
 
 Incorporate URl state management to enable sharable links.
+Hamburger menu for ultra small screens
