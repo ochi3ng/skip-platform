@@ -50,7 +50,7 @@ export default function Page() {
         <Button
           variant="outline"
           onClick={handleBack}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Waste Type</span>
@@ -59,7 +59,7 @@ export default function Page() {
         <Button
           onClick={handleContinue}
           disabled={!selectedSkip}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 cursor-pointer"
         >
           <span>Continue to Permit Check</span>
           <ArrowRight className="w-4 h-4" />
