@@ -18,13 +18,13 @@ export default function Page() {
   const handleContinue = () => {
     if (selectedSkip) {
       setStep(4);
-      router.push("/booking/permit-check");
+      router.push("/permit-check");
     }
   };
 
   const handleBack = () => {
     setStep(2);
-    router.push("/booking/waste-type");
+    router.push("/waste-type");
   };
 
   if (isLoading) {
@@ -42,7 +42,6 @@ export default function Page() {
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Select the skip size that best suits your needs. Each skip comes with
-          a {validSkips[0]?.hirePeriod || 14} day hire period.
         </p>
       </div>
 
