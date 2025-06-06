@@ -1,11 +1,13 @@
 "use client";
-import { steps } from "@/data";
-import { Card, CardHeader, CardTitle } from "../ui/card";
+
+import { Check, ChevronRight, Lock } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useBookingStore } from "@/lib/store";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { steps } from "@/data";
 
 export function ProgressSidebar() {
-  //logs selected item
-
   const {
     step,
     postcode,
@@ -16,7 +18,11 @@ export function ProgressSidebar() {
     setStep,
   } = useBookingStore();
 
-  console.log("step", step);
+  const getStepStatus = (stepId: number) => {
+    if (stepId < step) return "completed";
+    if (stepId === step) return "current";
+    return "upcoming";
+  };
 
   const isStepComplete = (stepId: number) => {
     switch (stepId) {
@@ -38,13 +44,8 @@ export function ProgressSidebar() {
   };
 
   const canNavigateToStep = (stepId: number) => {
-    // Can always go back to completed steps or current step
     if (stepId <= step) return true;
-
-    // Can't go forward if current step isn't complete
     if (!isStepComplete(step)) return false;
-
-    // only navigate to the next step if previous steps are complete
     for (let i = 1; i < stepId; i++) {
       if (!isStepComplete(i)) return false;
     }
@@ -53,11 +54,11 @@ export function ProgressSidebar() {
   };
 
   const handleStepClick = (stepId: number) => {
-    console.log("clicked", stepId);
     if (canNavigateToStep(stepId)) {
       setStep(stepId);
     }
   };
+
   return (
     <div className="w-80 bg-gray-50 border-r border-gray-200 p-4 space-y-4 overflow-y-auto">
       <div className="mb-6">
@@ -71,16 +72,43 @@ export function ProgressSidebar() {
 
       <div className="space-y-3">
         {steps.map((stepItem) => {
+          const status = getStepStatus(stepItem.id);
+          const Icon = stepItem.icon;
+          const isClickable = canNavigateToStep(stepItem.id);
+
           return (
             <Card
-              onClick={() => handleStepClick(stepItem.id)}
-              className="cursor-pointer hover:shadow-md"
               key={stepItem.id}
+              className={cn(
+                "transition-all duration-200 border-2",
+                status === "current" && "border-blue-500 shadow-md",
+                status === "completed" && "border-green-200 bg-green-50",
+                status === "upcoming" && "border-gray-200",
+                isClickable && "cursor-pointer hover:shadow-md",
+                !isClickable && status === "upcoming" && "opacity-60"
+              )}
+              onClick={() => isClickable && handleStepClick(stepItem.id)}
             >
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div></div>
+                    <div
+                      className={cn(
+                        "flex items-center justify-center w-8 h-8 rounded-full border-2 transition-colors",
+                        status === "completed" &&
+                          "bg-green-500 border-green-500 text-white",
+                        status === "current" &&
+                          "bg-blue-500 border-blue-500 text-white",
+                        status === "upcoming" &&
+                          "bg-white border-gray-300 text-gray-400"
+                      )}
+                    >
+                      {status === "completed" ? (
+                        <Check className="w-4 h-4" />
+                      ) : (
+                        <Icon className="w-4 h-4" />
+                      )}
+                    </div>
                     <div>
                       <CardTitle className="text-sm font-medium">
                         {stepItem.name}
@@ -91,7 +119,29 @@ export function ProgressSidebar() {
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-2"></div>
+                  <div className="flex items-center space-x-2">
+                    {status === "completed" && (
+                      <Badge
+                        variant="secondary"
+                        className="bg-green-100 text-green-700 text-xs"
+                      >
+                        Complete
+                      </Badge>
+                    )}
+                    {status === "current" && (
+                      <Badge
+                        variant="secondary"
+                        className="bg-blue-100 text-blue-700 text-xs"
+                      >
+                        Current
+                      </Badge>
+                    )}
+                    {isClickable ? (
+                      <ChevronRight className="w-4 h-4 text-gray-400" />
+                    ) : status === "upcoming" ? (
+                      <Lock className="w-4 h-4 text-gray-300" />
+                    ) : null}
+                  </div>
                 </div>
               </CardHeader>
             </Card>
