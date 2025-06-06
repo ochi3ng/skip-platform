@@ -6,8 +6,11 @@ import { useBookingStore } from "@/lib/store";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { steps } from "@/data";
+import { usePathname, useRouter } from "next/navigation";
 
 export function ProgressSidebar() {
+  const pathname = usePathname();
+  const router = useRouter();
   const {
     step,
     postcode,
@@ -18,9 +21,16 @@ export function ProgressSidebar() {
     setStep,
   } = useBookingStore();
 
+  const getCurrentStep = () => {
+    const currentStepData = steps.find((step) => step.route === pathname);
+    return currentStepData?.id || 1;
+  };
+
+  const currentStep = getCurrentStep();
+
   const getStepStatus = (stepId: number) => {
-    if (stepId < step) return "completed";
-    if (stepId === step) return "current";
+    if (stepId < currentStep) return "completed";
+    if (stepId === currentStep) return "current";
     return "upcoming";
   };
 
@@ -53,9 +63,10 @@ export function ProgressSidebar() {
     return stepId === step + 1;
   };
 
-  const handleStepClick = (stepId: number) => {
-    if (canNavigateToStep(stepId)) {
-      setStep(stepId);
+  const handleStepClick = (stepItem: (typeof steps)[0]) => {
+    if (canNavigateToStep(stepItem.id)) {
+      setStep(stepItem.id);
+      router.push(stepItem.route);
     }
   };
 
@@ -87,7 +98,7 @@ export function ProgressSidebar() {
                 isClickable && "cursor-pointer hover:shadow-md",
                 !isClickable && status === "upcoming" && "opacity-60"
               )}
-              onClick={() => isClickable && handleStepClick(stepItem.id)}
+              onClick={() => isClickable && handleStepClick(stepItem)}
             >
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">

@@ -1,4 +1,5 @@
 import { ProgressSidebar } from "@/components/layout/progress-sidebar";
+import SkipSection from "@/components/shared/skip-section";
 import React from "react";
 
 export default function Page() {
@@ -8,7 +9,7 @@ export default function Page() {
 
       <main className="flex-1 p-8">
         <div className="max-w-6xl mx-auto">
-          <p>skip section</p>
+          <SkipSection />
         </div>
       </main>
     </div>
