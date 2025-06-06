@@ -8,7 +8,7 @@ export interface BookingState {
 }
 
 export interface WasteProps {
-    id: number;
+    id: string;
     size: number;
     hire_period_days: number;
     transport_cost: number | null;

@@ -1,5 +1,5 @@
 type ErrorComponentProps = {
-  error: unknown; // use `unknown` to safely support both Error and string
+  error: unknown;
 };
 
 export default function Component({ error }: ErrorComponentProps) {
