@@ -22,5 +22,5 @@ export interface WasteProps {
     updated_at: string;
     allowed_on_road: boolean;
     allows_heavy_waste: boolean;
-
+    image: string | null
 }
