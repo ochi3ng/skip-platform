@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import { AlertTriangle, Info, ArrowRight } from "lucide-react";
@@ -7,14 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { WasteProps } from "@/types";
 import { SkipDrawer } from "./skip-drawer";
-
-interface SkipCardProps {
-  skip: WasteProps;
-  isSelected: boolean;
-  onSelect: (skipId: string) => void;
-}
+import { SkipCardProps } from "@/types";
 
 export function SkipCard({ skip, isSelected, onSelect }: SkipCardProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

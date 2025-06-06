@@ -24,3 +24,8 @@ export interface WasteProps {
     allows_heavy_waste: boolean;
     image: string | null
 }
+export interface SkipCardProps {
+    skip: WasteProps;
+    isSelected: boolean;
+    onSelect: (skipId: string) => void;
+}

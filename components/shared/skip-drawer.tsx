@@ -55,7 +55,7 @@ export function SkipDrawer({
           </SheetDescription>
         </SheetHeader>
 
-        <div className="mt-6 space-y-6">
+        <div className="mt-6 space-y-6 px-3">
           <Image
             src={image}
             alt={skipName}
@@ -85,12 +85,17 @@ export function SkipDrawer({
           <div className="flex flex-col space-y-3">
             <Button
               onClick={handleSelect}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
               size="lg"
             >
-              {isSelected ? "Selected" : "Select This Skip"}
+              {isSelected ? "Selected" : "Select this Skip"}
             </Button>
-            <Button variant="outline" onClick={onClose} size="lg">
+            <Button
+              variant="outline"
+              onClick={onClose}
+              size="lg"
+              className="cursor-pointer"
+            >
               Close
             </Button>
           </div>

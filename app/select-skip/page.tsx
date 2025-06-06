@@ -35,16 +35,7 @@ export default function Page() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Choose Your Skip Size
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Select the skip size that best suits your needs. Each skip comes with
-        </p>
-      </div>
-
+    <div className="space-y-2">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skips?.map((skip) => (
           <SkipCard

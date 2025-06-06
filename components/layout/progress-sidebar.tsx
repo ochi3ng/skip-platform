@@ -71,8 +71,8 @@ export function ProgressSidebar() {
   };
 
   return (
-    <div className="w-80 bg-gray-50 border-r border-gray-200 p-4 space-y-4 overflow-y-auto">
-      <div className="mb-6">
+    <div className="sticky top-0 h-screen w-80 bg-gray-50 border-r border-gray-200 p-4 space-y-4 overflow-y-auto">
+      <div className="mb-6 ">
         <h2 className="text-xl font-semibold text-gray-900 mb-2">
           Booking Progress
         </h2>
