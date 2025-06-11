@@ -1,3 +1,10 @@
-export default function Page() {
-  return <div className="flex justify-center items-center">Post Code</div>;
+import { Suspense } from 'react';
+import PostCodeClient from './PostCodeClient';
+
+export default function PostCodePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PostCodeClient />
+    </Suspense>
+  );
 }
