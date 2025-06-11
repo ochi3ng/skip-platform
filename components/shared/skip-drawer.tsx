@@ -82,7 +82,7 @@ export function SkipDrawer({
             </div>
           )}
 
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col space-y-3 cursor-pointer">
             <Button
               onClick={handleSelect}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"

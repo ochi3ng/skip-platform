@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import SkipOptionCard from './SkipOptionCard';
 
@@ -44,6 +44,7 @@ const SkipSelector = () => {
   }, [searchParams]);
 
   return (
+    <Suspense>
     <div className="min-h-screen bg-gray-900 text-white px-4 py-10">
       <div className="text-center space-y-1">
         <h1 className="text-3xl font-bold">Choose Your Skip Size</h1>
@@ -65,18 +66,23 @@ const SkipSelector = () => {
         ))}
       </div>
 
-      <div className="flex justify-between mt-10">
-        <button className="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600">Back</button>
-        <button
-          className={`px-4 py-2 rounded ${
-            selectedSizes.length > 0 ? 'bg-blue-600 text-white' : 'bg-gray-500 cursor-not-allowed'
-          }`}
-          disabled={selectedSizes.length === 0}
-        >
-          Continue →
-        </button>
-      </div>
+     <div className="flex justify-between mt-10">
+  <button className="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600 cursor-pointer">
+    Back
+  </button>
+  <button
+    className={`px-4 py-2 rounded ${
+      selectedSizes.length > 0
+        ? 'bg-blue-600 text-white cursor-pointer'
+        : 'bg-gray-500 cursor-not-allowed'
+    }`}
+    disabled={selectedSizes.length === 0}
+  >
+    Continue →
+  </button>
+</div>
     </div>
+    </Suspense>
   );
 };
 

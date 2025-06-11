@@ -45,7 +45,7 @@ const SkipOptionCard: React.FC<SkipOptionProps> = ({
       <p className="text-xl font-bold text-blue-600 mt-2">£{price}</p>
 
       <button
-        className={`mt-3 w-full py-2 rounded-md ${
+        className={`mt-3 w-full py-2 rounded-md cursor-pointer ${
           selected
             ? 'bg-blue-600 text-white'
             : 'bg-gray-100 text-black hover:bg-gray-200'
