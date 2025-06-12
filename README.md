@@ -1,55 +1,60 @@
-# Skip Hire Booking System
+# Skip Platform – Skip Hire Booking System
 
-Skip hire Revamp rebuilt with Next.js, TypeScript, and shadcn/ui components.
+A revamped skip hire booking experience built with **Next.js**, **TypeScript**, and **shadcn/ui** components.
+
+---
 
 ## 🚀 Overview
 
-This application redesigns skip selection into a multi-step form selection process.
+This project reimagines skip selection as a streamlined, multi-step form process — offering a modern, user-friendly experience for booking skip services.
+
+---
 
 ## ✨ Key Features
 
-- **Multi-Step Selection**: Route-based navigation with progress tracking
-- **Skip Selection**: Interactive cards with detailed specifications
-- **State Management**: Zustand with for state management of selected forms.
-- **API Integration**: React Query for data fetching with polling
-- **Responsive Design**: Mobile and desktop optimized layouts
+- **Multi-Step Navigation** – Route-based flow with progress tracking
+- **Interactive Skip Selection** – Visual cards with detailed specifications
+- **State Management** – Using Zustand to manage form selections
+- **API Integration** – React Query with polling support
+- **Responsive Design** – Fully optimized for mobile and desktop
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **UI Components**: shadcn/ui + Tailwind CSS
-- **State Management**: Zustand
-- **Data Fetching**: React Query
-- **Icons**: Lucide React
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **UI:** shadcn/ui + Tailwind CSS
+- **State Management:** Zustand
+- **Data Fetching:** React Query
+- **Icons:** Lucide React
 
-## 📋 Project Structure
+---
 
-\`\`\`
-app/booking/ # Route-based steps
-├── layout.tsx # Shared booking layout
-├── postcode/ # Step 1: Location
-├── waste-type/ # Step 2: Waste category
-├── select-skip/ # Step 3: Skip selection
-├── permit-check/ # Step 4: Permit check
-├── choose-date/ # Step 5: Delivery date
-└── payment/ # Step 6: Payment
-components/ # Reusable components
-lib/ # Utilities and state
-\`\`\`
+## 📁 Project Structure
+
+```bash
+app/booking/              # Multi-step booking routes
+├── layout.tsx            # Shared layout for steps
+├── postcode/             # Step 1: Location entry
+├── waste-type/           # Step 2: Waste category selection
+├── select-skip/          # Step 3: Skip size selection
+├── permit-check/         # Step 4: Permit requirements
+├── choose-date/          # Step 5: Select delivery date
+└── payment/              # Step 6: Payment processing
+
+components/               # Reusable UI components
+lib/                      # Utilities and Zustand stores
+
 
 ## 🚀 Getting Started
 
-\`\`\`bash
-
 # Install dependencies
-
 npm install
 
 # Start development server
-
 npm run dev
-\`\`\`
+
 
 ## 🔑 Implementation Highlights
 
